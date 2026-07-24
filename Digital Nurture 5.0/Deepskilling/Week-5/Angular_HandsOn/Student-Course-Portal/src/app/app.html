@@ -1,0 +1,7 @@
+<app-header></app-header>
+
+<div class="loading-bar" *ngIf="loadingService.isLoading$ | async">Loading...</div>
+
+<main class="app-shell">
+  <router-outlet></router-outlet>
+</main>

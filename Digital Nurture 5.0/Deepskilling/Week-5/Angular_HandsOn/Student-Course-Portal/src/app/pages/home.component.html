@@ -1,0 +1,34 @@
+<section class="hero">
+  <p class="eyebrow">Digital Nurture 5.0</p>
+  <h2>{{ portalName }}</h2>
+  <p class="lead">
+    A starter portal for browsing courses, managing enrollment, and exploring Angular concepts.
+  </p>
+
+  <div class="stats">
+    <article>
+      <strong>{{ courseCount }}</strong>
+      <span>Courses Available</span>
+    </article>
+    <article>
+      <strong>3</strong>
+      <span>Enrolled</span>
+    </article>
+    <article>
+      <strong>3.8</strong>
+      <span>GPA</span>
+    </article>
+  </div>
+
+  <label class="search-box">
+    Search courses
+    <!-- [property] updates the DOM from the component; [(ngModel)] keeps the DOM and component in sync both ways. -->
+    <input [(ngModel)]="searchTerm" placeholder="Try Angular" />
+  </label>
+  <p class="muted">Searching for: {{ searchTerm }}</p>
+
+  <div class="actions">
+    <button type="button" [disabled]="!isPortalActive" (click)="onEnrollClick()">Enroll Now</button>
+    <p>{{ message }}</p>
+  </div>
+</section>

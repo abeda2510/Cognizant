@@ -1,0 +1,13 @@
+<section class="page">
+  <h2>Course Detail</h2>
+  <ng-container *ngIf="course; else missing">
+    <p><strong>Name:</strong> {{ course.name }}</p>
+    <p><strong>Code:</strong> {{ course.code }}</p>
+    <p><strong>Credits:</strong> {{ course.credits }}</p>
+    <p><strong>Status:</strong> {{ course.gradeStatus }}</p>
+  </ng-container>
+
+  <ng-template #missing>
+    <p>Course not found.</p>
+  </ng-template>
+</section>

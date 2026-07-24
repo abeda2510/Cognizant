@@ -1,0 +1,26 @@
+<article
+  class="course-card"
+  [ngClass]="{
+    'card--enrolled': (enrolledIds$ | async)?.includes(course.id),
+    'card--full': course.credits >= 4,
+    expanded: isExpanded
+  }"
+  [ngStyle]="{ 'border-left-color': course.gradeStatus === 'passed' ? '#2e9b4f' : course.gradeStatus === 'failed' ? '#d64545' : '#8b94a5' }"
+  (click)="onCardClick()"
+>
+  <h3>{{ course.name }}</h3>
+  <p><strong>Code:</strong> {{ course.code }}</p>
+  <p><strong>Credits:</strong> {{ course.credits | creditLabel }}</p>
+  <p [ngSwitch]="course.gradeStatus">
+    <span *ngSwitchCase="'passed'" class="status status--passed">Passed</span>
+    <span *ngSwitchCase="'failed'" class="status status--failed">Failed</span>
+    <span *ngSwitchDefault class="status status--pending">Pending</span>
+  </p>
+  <div class="actions">
+    <button type="button" (click)="onEnrollClick($event)">{{ (enrolledIds$ | async)?.includes(course.id) ? 'Unenroll' : 'Enroll' }}</button>
+    <button type="button" class="secondary" (click)="toggleDetails()">Show Details</button>
+  </div>
+  <div *ngIf="isExpanded" class="details">
+    <p><strong>Grade status:</strong> {{ course.gradeStatus }}</p>
+  </div>
+</article>

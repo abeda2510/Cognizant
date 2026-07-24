@@ -1,0 +1,14 @@
+<section class="page">
+  <h2>Student Profile</h2>
+  <p class="muted">Courses enrolled through the shared enrollment service.</p>
+
+  <ul>
+    <li *ngFor="let course of enrollmentService.getEnrolledCourses()">
+      {{ course.name }} ({{ course.code }})
+    </li>
+  </ul>
+
+  <p *ngIf="enrolledIds$ | async as enrolledIds">Selected IDs: {{ enrolledIds.join(', ') }}</p>
+
+  <app-notification></app-notification>
+</section>

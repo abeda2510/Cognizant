@@ -1,0 +1,25 @@
+.page {
+  padding: 2rem 1.5rem 3rem;
+}
+
+.muted,
+.selected {
+  color: #5f6577;
+}
+
+.error {
+  color: #b42318;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.search-box {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 24rem;
+  margin-bottom: 1rem;
+}

@@ -1,0 +1,14 @@
+.page {
+  padding: 2rem 1.5rem 3rem;
+}
+
+form {
+  display: grid;
+  gap: 1rem;
+  max-width: 30rem;
+}
+
+label {
+  display: grid;
+  gap: 0.4rem;
+}

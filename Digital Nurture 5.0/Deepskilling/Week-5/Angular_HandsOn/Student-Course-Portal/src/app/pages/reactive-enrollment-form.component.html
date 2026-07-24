@@ -1,0 +1,46 @@
+<section class="page">
+  <h2>Reactive Enrollment Form</h2>
+  <p>Reactive forms keep the model in TypeScript.</p>
+
+  <form [formGroup]="enrollForm" (ngSubmit)="onSubmit()">
+    <label>
+      Name
+      <input formControlName="studentName" />
+    </label>
+
+    <label>
+      Email
+      <input formControlName="studentEmail" />
+      <span *ngIf="enrollForm.get('studentEmail')?.errors?.['emailTaken']">Email taken</span>
+    </label>
+
+    <label>
+      Course ID
+      <input formControlName="courseId" />
+      <span *ngIf="enrollForm.get('courseId')?.errors?.['noCourseCode']">Course code starting with XX is not allowed.</span>
+    </label>
+
+    <label>
+      Preferred Semester
+      <select formControlName="preferredSemester">
+        <option>Odd</option>
+        <option>Even</option>
+      </select>
+    </label>
+
+    <label>
+      <input type="checkbox" formControlName="agreeToTerms" />
+      Agree to terms
+    </label>
+
+    <section formArrayName="additionalCourses">
+      <button type="button" (click)="addCourse()">Add Another Course</button>
+      <div *ngFor="let ctrl of additionalCourses.controls; let i = index">
+        <input [formControl]="$any(ctrl)" />
+        <button type="button" (click)="removeCourse(i)">Remove</button>
+      </div>
+    </section>
+
+    <button type="submit" [disabled]="enrollForm.invalid">Submit</button>
+  </form>
+</section>
